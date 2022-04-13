@@ -14,7 +14,7 @@ namespace ConsoleApp1
             DateTime to = new DateTime(2022 ,3,3,6,0,0);
             meetingSchedule.SetMeeting("aaa", from, to);
             DateTime from1 = new DateTime(2022,3,3,1,0,0);
-            DateTime to1 = new DateTime(2022 ,3,3,8,0,0);
+            DateTime to1 = new DateTime(2022 ,3,3,3,0,0);
             meetingSchedule.SetMeeting("bbb", from1, to1);
             foreach (var item in meetingSchedule.Meetings)
             {

@@ -10,19 +10,22 @@ namespace ClassLibrary1
         public void SetMeeting (string fullName , DateTime from ,DateTime to)
         {
             //Ikinci hal
-          //   if (!Meetings.Exists(x => (x.FromDate > from && x.FromDate > to ) ||(x.FromDate<from && x.ToDate<from &&x.FromDate>to )))
-                if (!Meetings.Exists(x => (x.FromDate < from || x.FromDate < to) && (x.ToDate > x.FromDate)))
-                {
+            // if (!Meetings.Exists(x => (x.FromDate < from && x.FromDate <to )||(x.ToDate > x.FromDate)))
+            // if (!Meetings.Exists(x => (x.FromDate < from || x.FromDate < to) && (x.ToDate > x.FromDate || x.ToDate < x.FromDate)))
+            // if (!Meetings.Exists(x => (x.FromDate <from && x.FromDate < to)))
+            if (!Meetings.Exists(x => (x.FromDate > from && x.FromDate < to) || (x.ToDate < to && x.ToDate > from) || (from > x.FromDate && from < x.ToDate) || (to < x.ToDate && to > x.FromDate)))
+            {
                 Meeting meeting = new Meeting();
                 meeting.Name = fullName;
                 meeting.FromDate = from;
-                meeting.ToDate= to;
+                meeting.ToDate = to;
 
                 Meetings.Add(meeting);
             }
+           
             else
             {
-                throw new Exception("Bele meeting artiq yardilib!!!!");
+                throw new Exception("Bele araliqda  meeting artiq yardilib!!!!");
             }
         }
         public int FindMeetingsCount(DateTime dateTime)
